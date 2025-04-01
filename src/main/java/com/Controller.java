@@ -22,4 +22,13 @@ public class Controller {
     public String testApi() {
         return "Cache test";
     }
+    @PostMapping("/set")
+    public String cacheSet(@RequestBody CacheRequest cacheRequest) {
+        redisTemplate.opsForValue().set(cacheRequest.getKey(), cacheRequest.getValue());
+        return "Cache set successfully";
+    }
+    @GetMapping("/get")
+    public String cacheGet(@RequestParam String key) {
+        return redisTemplate.opsForValue().get(key);
+    }
 }
