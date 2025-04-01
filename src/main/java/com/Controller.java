@@ -18,4 +18,8 @@ public class Controller {
         String value = redisTemplate.opsForValue().get("message");
         return "Cache test: " + value;
     }
+    @GetMapping("/ping")
+    public String testApi() {
+        return "Cache test";
+    }
 }
